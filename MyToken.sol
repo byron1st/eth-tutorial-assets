@@ -9,9 +9,16 @@ contract MyToken {
     string private _name;
     string private _symbol;
 
-    constructor(string memory name, string memory symbol) {
+    constructor(
+        string memory name,
+        string memory symbol,
+        uint256 initialSupply
+    ) {
         _name = name;
         _symbol = symbol;
+        _totalSupply = initialSupply;
+
+        _balances[msg.sender] = initialSupply;
     }
 
     function totalSupply() public view returns (uint256) {
